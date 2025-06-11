@@ -14,4 +14,8 @@ int main(){
     a += 20;
 
     cout << a << endl;
+
+    a /= 2; 
+
+    cout << a << endl;
 }
