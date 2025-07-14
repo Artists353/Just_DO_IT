@@ -13,16 +13,15 @@ class Doctor{
     bool deputy_physician = true;
     bool doctor = true;
     
-    int doctor_say(){
+    void doctor_say(){
         setlocale(LC_ALL, "ru-RU.UTF-8");
         cout << "Имя: " <<  name << "\nДолжность: " << job_title << "\nЕго ум: " << iq << endl;
-        return 0;
     }
     int doctor_work(string work, string job_descriptions){
         setlocale(LC_ALL, "ru-RU.UTF-8");
-        cout << "\nНачначена работа " << work << endl;
-        cout << "\nОписание работы " << job_descriptions << endl;
-        cout << "\nВыберите отложить эту работу или повесить её на других рабочих.";
+        cout << "\nНачначена работа: " << work << endl;
+        cout << "\nОписание работы: " << job_descriptions << endl;
+        cout << "\nВыберите отложить эту работу или повесить её на других рабочих. \n1 - повесить на другого рабочего \n2 -- самому взяться за работу";
         int obligation;
         cin >> obligation;
         if (obligation == 1){
@@ -59,8 +58,13 @@ int main(){
     setlocale(LC_ALL, "ru-RU.UTF-8");
     Doctor d;
     d.doctor_say();
-    while (d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.") == 0){
-        d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.");
+    while (d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.")){
+        if (d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.") == 0){
+            break;
+        }
+        else{
+            d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.");
+        }
     }
     //Возращение 0
     return 0;
