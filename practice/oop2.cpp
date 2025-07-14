@@ -13,15 +13,16 @@ class Doctor{
     bool deputy_physician = true;
     bool doctor = true;
     
-    void doctor_say(){
+    int doctor_say(){
         setlocale(LC_ALL, "ru-RU.UTF-8");
         cout << "Имя: " <<  name << "\nДолжность: " << job_title << "\nЕго ум: " << iq << endl;
+        return 0;
     }
-    void doctor_work(string work, string job_descriptions){
+    int doctor_work(string work, string job_descriptions){
         setlocale(LC_ALL, "ru-RU.UTF-8");
-        cout << "Начначена работа " << work << endl;
-        cout << "Описание работы " << job_descriptions << endl;
-        cout << "Выберите отложить эту работу или повесить её на других рабочих.";
+        cout << "\nНачначена работа " << work << endl;
+        cout << "\nОписание работы " << job_descriptions << endl;
+        cout << "\nВыберите отложить эту работу или повесить её на других рабочих.";
         int obligation;
         cin >> obligation;
         if (obligation == 1){
@@ -32,20 +33,24 @@ class Doctor{
                 cout << "Хорошо, переложили работу на вашего заместителя, пусть разбирается)))" << endl;
                 deputy_physician = false;
             }
-            else if(deputy_physician == false){
+            else if(a == 1 && deputy_physician == false){
                 cout << "О ноооооуууу, заметитель занят, пока прийдёться взяться за работу";
             }
             if (a==2 && doctor == true){
                 cout << "Хорошо, врачи взялись за работу" << endl;
                 doctor = false;
             }
-            else if(doctor == false){
+            else if(a==2 && doctor == false){
                 cout << "О ноооооуууу, врач занят, пока прийдёться взяться за работу";
             }
         }
-        else {
+        else if(obligation == 2) {
             cout << "Тогда за работу." << endl;
         }
+        else{
+            return 0;
+        }
+        return 5785785;
     }
 };
 
@@ -54,7 +59,9 @@ int main(){
     setlocale(LC_ALL, "ru-RU.UTF-8");
     Doctor d;
     d.doctor_say();
-    d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.");
+    while (d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.")){
+        d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.");
+    }
     //Возращение 0
     return 0;
 }
