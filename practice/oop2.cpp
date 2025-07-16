@@ -61,27 +61,28 @@ int main(){
     int size;
     cout << "Сколько больных сегодня поступило в больницу: " << endl;
     cin >> size;
+    cin.ignore(); // <-- добавлено!
+
     const int SIZE = size;
     string arr[SIZE];
     string arr_b[SIZE];
-    for (int i = 0; i <= size; i++){
+
+    for (int i = 1; i <= size; i++) {
         string a;
-        cout << "Введите проблему " << i << "-ого пацеента";
-        getline(cin, a);
-        arr[i] = a;
-        a = "";
+        cout << "\nВведите проблему " << i << "-ого пациента: ";
+        getline(cin >> ws, a);
+        arr[i] = a; 
+
         string b;
-        cout << "Введите описание, что случилось с пациентом " << i << "-ого пацеента";
-        getline(cin, b);
+        cout << "Введите описание, что случилось с пациентом " << i << "-ого пациента: ";
+        getline(cin >> ws, b);
         arr_b[i] = b;
-        b = "";
-        if (d.doctor_work(arr[i], arr_b[i]) == 0){
+
+        if (d.doctor_work(arr[i], arr_b[i]) == 0) {
             break;
         }
-        else{
-            d.doctor_work(arr[i], arr_b[i]);
-        }
-    }
+}
+
     //Возращение 0
     return 0;
 }
