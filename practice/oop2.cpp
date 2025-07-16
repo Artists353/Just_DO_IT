@@ -58,12 +58,28 @@ int main(){
     setlocale(LC_ALL, "ru-RU.UTF-8");
     Doctor d;
     d.doctor_say();
-    while (d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.")){
-        if (d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.") == 0){
+    int size;
+    cout << "Сколько больных сегодня поступило в больницу: " << endl;
+    cin >> size;
+    const int SIZE = size;
+    string arr[SIZE];
+    string arr_b[SIZE];
+    for (int i = 0; i <= size; i++){
+        string a;
+        cout << "Введите проблему " << i << "-ого пацеента";
+        getline(cin, a);
+        arr[i] = a;
+        a = "";
+        string b;
+        cout << "Введите описание, что случилось с пациентом " << i << "-ого пацеента";
+        getline(cin, b);
+        arr_b[i] = b;
+        b = "";
+        if (d.doctor_work(arr[i], arr_b[i]) == 0){
             break;
         }
         else{
-            d.doctor_work("№1 работа связанная с ногой", "Нога человека поломанна, надо лечить.");
+            d.doctor_work(arr[i], arr_b[i]);
         }
     }
     //Возращение 0
